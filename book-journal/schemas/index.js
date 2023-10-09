@@ -1,6 +1,15 @@
-import blockContent from './blockContent'
-import category from './category'
-import post from './post'
-import author from './author'
 
-export const schemaTypes = [post, author, category, blockContent]
+import book from './book'
+
+
+export const schemaTypes = [book]
+
+// import createSchema from 'part:@sanity/base/schema-creator';
+// import schemaTypes from 'all:part:@sanity/base/schema-type';
+
+// import book from './book';
+
+// export default createSchema({
+//   name: 'default',
+//   types: schemaTypes.concat([book]),
+// });
