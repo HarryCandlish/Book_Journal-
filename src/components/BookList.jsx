@@ -4,19 +4,21 @@ import { Link } from 'react-router-dom';
 import { GoIssueClosed } from 'react-icons/go'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
 
-import sanityClient from "../client.js";
+import createClient from "../client.js";
 
 import '../styles/booklist.css'
 
-function BookList() {
+export default function BookList() {
   const [books, setBooks] = useState(null);
 
   useEffect(() => {
-    sanityClient
+    createClient
       .fetch(
         `*[_type == "book"]{
         title,
         author,
+        read,
+        slug,
         image{
           asset->{
           _id,
@@ -42,10 +44,10 @@ return (
         </thead>
         {books &&
         books.map((book, index) => (
-          <tbody>
+          <tbody key={index} >
             <tr>
-            <td>
-            <Link to={`/book/${book.slug}`}>
+            <td> 
+            <Link to={`/book/${book.slug.current}`}>
               <img
                 className='book-image'
                 src={book.image.asset.url}
@@ -54,7 +56,7 @@ return (
               </td>
                   <td className='book_title'>{book.title}</td>
                     <td>{book.author}</td>
-                  <td>{book.read === true ? <IoIosCloseCircleOutline/> : <GoIssueClosed/>}</td>
+                  <td>{book.read === true ? <GoIssueClosed/> : <IoIosCloseCircleOutline/>}</td>
               </tr>
             </tbody>
         ))}
@@ -66,5 +68,3 @@ return (
     </div>
   );
 };
-
-export default BookList;
