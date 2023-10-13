@@ -69,10 +69,10 @@ return (
             <td> 
             <Link to={`/book/${book.slug && book.slug.current}`}>
             {book.image && book.image.asset && book.image.asset.url ? (
-              <img className='book-image' src={book.image.asset.url} alt="image" />
-            ) : (
-              <span>No Image</span>
-            )}
+                      <img className='book-image' src={book.image.asset.url} alt="image" />
+                    ) : (
+                      <span>No Image</span>
+                    )}
             </Link>
               </td>
                   <td className='book_title'>{book.title}</td>
