@@ -1,12 +1,19 @@
-// src/components/OnePost.js
+
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import createClient from "../client.js";
 
-export default function Book() {
-  const [bookData, setBook] = useState(null);
+import '../styles/book.css'
+
+export default function Book({}) {
+  const navigate = useNavigate();
+  const [book, setBook] = useState(null);
   const { slug } = useParams();
+
+  const handleEdit = () => {
+    navigate(`/edit-book/${book.slug.current}`);
+  }
 
   useEffect(() => {
     createClient
@@ -28,18 +35,19 @@ export default function Book() {
       .catch(console.error);
   }, [slug]);
 
-  if (!bookData) return <div>Loading...</div>;
+  if (!book) return <div>Loading...</div>;
 
   return (
     <div>
       <div>
-        <h2>{bookData.title}</h2>
+        <h2>{book.title}</h2>
         <div>
-          <h4>{bookData.name}</h4>
+          <h4>{book.author}</h4>
         </div>
       </div>
-      <img src={bookData.image.asset.url} alt="" />
+      <img className="book_image" src={book.image.asset.url} alt="" />
       <div>
+        <button onClick={handleEdit}>Edit</button>
       </div>
     </div>
   );
