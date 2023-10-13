@@ -17,6 +17,7 @@ export default function BookList() {
     createClient
       .fetch(
         `*[_type == "book"]{
+          _id,
           title,
           author,
           read,
@@ -50,6 +51,15 @@ export default function BookList() {
     }
   }, [newBookId]);
 
+  const deleteBook = async (bookId) => {
+    try {
+      await createClient.delete(bookId);
+      setBooks((prevBooks) => prevBooks.filter((book) => book._id !== bookId));
+    } catch (error) {
+      console.error('Error deleting the book:', error);
+    }
+  };
+
 
 return (
     <div>
@@ -78,6 +88,12 @@ return (
                   <td className='book_title'>{book.title}</td>
                     <td>{book.author}</td>
                   <td>{book.read === true ? <GoIssueClosed/> : <IoIosCloseCircleOutline/>}</td>
+                  <td>
+                  
+                    <button onClick={() => { console.log(book._id); deleteBook(book._id); }}>Delete</button>
+
+
+                </td>
               </tr>
             </tbody>
         ))}

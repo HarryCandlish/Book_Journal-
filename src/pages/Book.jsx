@@ -1,19 +1,14 @@
 
 
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import createClient from "../client.js";
 
 import '../styles/book.css'
 
 export default function Book({}) {
-  const navigate = useNavigate();
   const [book, setBook] = useState(null);
   const { slug } = useParams();
-
-  const handleEdit = () => {
-    navigate(`/edit-book/${book.slug.current}`);
-  }
 
   useEffect(() => {
     createClient
@@ -47,7 +42,7 @@ export default function Book({}) {
       </div>
       <img className="book_image" src={book.image.asset.url} alt="" />
       <div>
-        <button onClick={handleEdit}>Edit</button>
+      <Link to={`/edit-book/${book.slug && book.slug.current}`}>Edit</Link>
       </div>
     </div>
   );

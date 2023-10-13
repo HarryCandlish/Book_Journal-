@@ -71,50 +71,17 @@ const CreateBookForm = () => {
  
 
   return (
-    <form onSubmit={handleSubmit}>
-    <label>
-      Title:
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-    </label>
-    <br />
-    <label>
-      Author:
-      <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
-    </label>
-    <br />
-    <label>
-      Read:
-      <input type="checkbox" checked={read} onChange={(e) => setRead(e.target.checked)} />
-    </label>
-    <br />
-    <label>
-      Slug:
-      <input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} />
-    </label>
-    <br />
-    <label>
-        Image:
-        <input type="file" onChange={handleImageChange} />
-        {imagePreview && <img src={imagePreview} alt="Preview" />}
-      </label>
-    <br />
-    <label>
-      Genre:
-      <input type="text" value={genre} onChange={(e) => setGenre(e.target.value)} />
-    </label>
-    <br />
-    <label>
-      Pages:
-      <input type="text" value={pages} onChange={(e) => setPages(e.target.value)} />
-    </label>
-    <br />
-    <label>
-      Location:
-      <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
-    </label>
-    <br />
-    <button type="submit">Create Book</button>
-  </form>
+      <form onSubmit={handleSubmit}>
+        <label>Title:<input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/></label><br/>
+          <label>Author:<input type="text" value={author} onChange={(e) => setAuthor(e.target.value)}/></label><br/>
+            <label>Read:<input type="checkbox" checked={read} onChange={(e) => setRead(e.target.checked)}/></label><br/>
+              <label>Slug:<input type="text" value={slug} onChange={(e) => setSlug(e.target.value)}/></label><br/>
+                <label>Image:<input type="file" onChange={handleImageChange}/>{imagePreview && <img src={imagePreview} alt="Preview"/>}</label><br/>
+              <label>Genre:<input type="text" value={genre} onChange={(e) => setGenre(e.target.value)}/></label><br/>
+            <label>Pages:<input type="text" value={pages} onChange={(e) => setPages(e.target.value)}/></label><br/>
+          <label>Location:<input type="text" value={location} onChange={(e) => setLocation(e.target.value)}/></label><br/>
+        <button type="submit">Create Book</button>
+    </form>
 
   );
 };
