@@ -36,14 +36,11 @@ export default function Book({}) {
     <div>
       <div>
         <h2>{book.title}</h2>
-        <div>
-          <h4>{book.author}</h4>
+          <div>
+            <h4>{book.author}</h4>
+          </div>
         </div>
-      </div>
       <img className="book_image" src={book.image.asset.url} alt="" />
-      <div>
-      <Link to={`/edit-book/${book.slug && book.slug.current}`}>Edit</Link>
-      </div>
     </div>
   );
 }

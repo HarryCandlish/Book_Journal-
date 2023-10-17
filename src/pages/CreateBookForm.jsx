@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import createClient from '../client';
 
+import '../styles/formstyles.css'
+
 const CreateBookForm = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
@@ -62,7 +64,7 @@ const CreateBookForm = () => {
     console.log(createdBook);
 
     // Navigate to the new book's page
-    navigate(`/book/${createdBook.slug.current}`);
+    navigate('/');
   } catch (error) {
     console.error('Error creating a new book:', error);
   }
@@ -71,18 +73,19 @@ const CreateBookForm = () => {
  
 
   return (
-      <form onSubmit={handleSubmit}>
-        <label>Title:<input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/></label><br/>
-          <label>Author:<input type="text" value={author} onChange={(e) => setAuthor(e.target.value)}/></label><br/>
-            <label>Read:<input type="checkbox" checked={read} onChange={(e) => setRead(e.target.checked)}/></label><br/>
-              <label>Slug:<input type="text" value={slug} onChange={(e) => setSlug(e.target.value)}/></label><br/>
-                <label>Image:<input type="file" onChange={handleImageChange}/>{imagePreview && <img src={imagePreview} alt="Preview"/>}</label><br/>
-              <label>Genre:<input type="text" value={genre} onChange={(e) => setGenre(e.target.value)}/></label><br/>
-            <label>Pages:<input type="text" value={pages} onChange={(e) => setPages(e.target.value)}/></label><br/>
-          <label>Location:<input type="text" value={location} onChange={(e) => setLocation(e.target.value)}/></label><br/>
-        <button type="submit">Create Book</button>
+    <div className="form-container">
+      <form className="form-text" onSubmit={handleSubmit}>
+        <label className="form-text">Title:<input className="form-input" type="text" value={title} onChange={(e) => setTitle(e.target.value)}/></label><br/>
+          <label className="form-text">Author:<input className="form-input" type="text" value={author} onChange={(e) => setAuthor(e.target.value)}/></label><br/>
+            <label className="form-text">Read:<input className="form-input" type="checkbox" checked={read} onChange={(e) => setRead(e.target.checked)}/></label><br/>
+              <label className="form-text">Slug:<input className="form-input" type="text" value={slug} onChange={(e) => setSlug(e.target.value)}/></label><br/>
+                <label className="form-text">Image:<input className="form-input" type="file" onChange={handleImageChange}/>{imagePreview && <img className="form-input-image" src={imagePreview} alt="Preview"/>}</label><br/>
+              <label className="form-text">Genre:<input className="form-input" type="text" value={genre} onChange={(e) => setGenre(e.target.value)}/></label><br/>
+            <label className="form-text">Pages:<input className="form-input" type="text" value={pages} onChange={(e) => setPages(e.target.value)}/></label><br/>
+          <label className="form-text">Location:<input className="form-input" type="text" value={location} onChange={(e) => setLocation(e.target.value)}/></label><br/>
+        <button className="form-button" type="submit">Create Book</button>
     </form>
-
+  </div>
   );
 };
 

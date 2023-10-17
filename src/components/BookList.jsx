@@ -66,43 +66,41 @@ return (
       <table className='row-container'>
         <thead>
           <tr>
-          <th></th>
-            <th>TITLE</th>
-            <th>AUTHOR</th>
-            <th>READ</th>
+            <th></th>
+              <th>TITLE</th>
+                <th>AUTHOR</th>
+              <th>READ</th>
           </tr>
         </thead>
-        {books &&
-        books.map((book, index) => (
-          <tbody key={index} >
-            <tr>
-            <td> 
-            <Link to={`/book/${book.slug && book.slug.current}`}>
-            {book.image && book.image.asset && book.image.asset.url ? (
-                      <img className='book-image' src={book.image.asset.url} alt="image" />
+          {books &&
+            books.map((book, index) => (
+              <tbody key={index} >
+                <tr>
+              <td> 
+                <Link to={`/book/${book.slug && book.slug.current}`}>
+                  {book.image && book.image.asset && book.image.asset.url ? (
+                    <img className='book-image' src={book.image.asset.url} alt="image" />
                     ) : (
-                      <span>No Image</span>
+                    <span>No Image</span>
                     )}
-            </Link>
+                </Link>
               </td>
-                  <td className='book_title'>{book.title}</td>
-                    <td>{book.author}</td>
-                  <td>{book.read === true ? <GoIssueClosed/> : <IoIosCloseCircleOutline/>}</td>
-                  <td>
-                  
-                    <button onClick={() => { console.log(book._id); deleteBook(book._id); }}>Delete</button>
-
-
-                </td>
-              </tr>
-            </tbody>
-        ))}
-      </table>
-      <div>
-        <div>
-        <Link to='create-book'>Create Book</Link>
+                <td className='book_title'>{book.title}</td>
+                  <td>{book.author}</td>
+                    <td>{book.read === true ? <GoIssueClosed/> : <IoIosCloseCircleOutline/>}</td>
+                      <td>
+                        <button><Link to={`/edit-book/${book._id}`}>Edit</Link></button>
+                        <button onClick={() => deleteBook(book._id)}>Delete</button>
+                    </td>
+                  </tr>
+              </tbody>
+            ))}
+          </table>
+            <div>
+              <div>
+                <Link to='create-book'>Create Book</Link>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
   );
 };

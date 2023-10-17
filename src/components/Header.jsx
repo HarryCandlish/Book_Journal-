@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import '../styles/header.css'
 import { RxHamburgerMenu, RxCross1 } from 'react-icons/rx'
 
+import {IoBookOutline } from 'react-icons/io5'
+
+
 
 
 const Header = () => {
@@ -19,7 +22,7 @@ const Header = () => {
     <nav className='navbar'>
       <div className='navbar-container'>
          <Link to='/' className='navbar-logo'>
-            <h1>BOOKS</h1>
+         <IoBookOutline/>
          </Link>
          <div className="menu-icon" onClick={toggleMenu}>
             {isOpen ? <RxCross1/> : <RxHamburgerMenu/>}

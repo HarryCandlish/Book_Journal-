@@ -13,8 +13,8 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/book/:slug' element={<Book/>}/>
         <Route path='/create-book' element={<CreateBookForm/>}/>
-        <Route path='/edit-book/:bookSlug' element={<EditBookForm/>}/>
-      </Routes>
+        <Route path="/edit-book/:bookId" element={<EditBookForm />} />
+    </Routes>
     </div>
   );
 }
